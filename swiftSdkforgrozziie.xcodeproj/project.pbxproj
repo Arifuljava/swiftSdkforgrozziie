@@ -16,6 +16,7 @@
 		259729442AC56D93000CFF09 /* swiftSdkforgrozziieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259729432AC56D93000CFF09 /* swiftSdkforgrozziieTests.swift */; };
 		2597294E2AC56D93000CFF09 /* swiftSdkforgrozziieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597294D2AC56D93000CFF09 /* swiftSdkforgrozziieUITests.swift */; };
 		259729502AC56D93000CFF09 /* swiftSdkforgrozziieUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597294F2AC56D93000CFF09 /* swiftSdkforgrozziieUITestsLaunchTests.swift */; };
+		259729612AC58CC5000CFF09 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 259729602AC58CC5000CFF09 /* SPIndicator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				259729612AC58CC5000CFF09 /* SPIndicator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = swiftSdkforgrozziie;
+			packageProductDependencies = (
+				259729602AC58CC5000CFF09 /* SPIndicator */,
+			);
 			productName = swiftSdkforgrozziie;
 			productReference = 259729292AC56D92000CFF09 /* swiftSdkforgrozziie.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 259729202AC56D91000CFF09;
+			packageReferences = (
+				2597295F2AC58CC5000CFF09 /* XCRemoteSwiftPackageReference "SPIndicator" */,
+			);
 			productRefGroup = 2597292A2AC56D92000CFF09 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -442,6 +450,10 @@
 				DEVELOPMENT_TEAM = V23C68N65J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = swiftSdkforgrozziie/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SwiftSDK;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -470,6 +482,10 @@
 				DEVELOPMENT_TEAM = V23C68N65J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = swiftSdkforgrozziie/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SwiftSDK;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -624,6 +640,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2597295F2AC58CC5000CFF09 /* XCRemoteSwiftPackageReference "SPIndicator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPIndicator";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		259729602AC58CC5000CFF09 /* SPIndicator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2597295F2AC58CC5000CFF09 /* XCRemoteSwiftPackageReference "SPIndicator" */;
+			productName = SPIndicator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 259729212AC56D91000CFF09 /* Project object */;
 }
