@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2571B86E2AC7C029006828AF /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2571B86D2AC7C029006828AF /* CustomAlertViewController.swift */; };
 		2597292D2AC56D92000CFF09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597292C2AC56D92000CFF09 /* AppDelegate.swift */; };
 		2597292F2AC56D92000CFF09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597292E2AC56D92000CFF09 /* SceneDelegate.swift */; };
 		259729312AC56D92000CFF09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259729302AC56D92000CFF09 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2571B86D2AC7C029006828AF /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		259729292AC56D92000CFF09 /* swiftSdkforgrozziie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftSdkforgrozziie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2597292C2AC56D92000CFF09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2597292E2AC56D92000CFF09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				2597292C2AC56D92000CFF09 /* AppDelegate.swift */,
 				2597292E2AC56D92000CFF09 /* SceneDelegate.swift */,
+				2571B86D2AC7C029006828AF /* CustomAlertViewController.swift */,
 				259729302AC56D92000CFF09 /* ViewController.swift */,
 				259729322AC56D92000CFF09 /* Main.storyboard */,
 				259729352AC56D93000CFF09 /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2571B86E2AC7C029006828AF /* CustomAlertViewController.swift in Sources */,
 				259729312AC56D92000CFF09 /* ViewController.swift in Sources */,
 				2597292D2AC56D92000CFF09 /* AppDelegate.swift in Sources */,
 				2597292F2AC56D92000CFF09 /* SceneDelegate.swift in Sources */,
