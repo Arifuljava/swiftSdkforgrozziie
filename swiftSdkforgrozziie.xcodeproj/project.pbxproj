@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2571B86E2AC7C029006828AF /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2571B86D2AC7C029006828AF /* CustomAlertViewController.swift */; };
+		2571B8762AC80793006828AF /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2571B8752AC80793006828AF /* PopUp.swift */; };
+		2571B8782AC807AA006828AF /* PopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2571B8772AC807AA006828AF /* PopUp.xib */; };
 		2597292D2AC56D92000CFF09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597292C2AC56D92000CFF09 /* AppDelegate.swift */; };
 		2597292F2AC56D92000CFF09 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597292E2AC56D92000CFF09 /* SceneDelegate.swift */; };
 		259729312AC56D92000CFF09 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259729302AC56D92000CFF09 /* ViewController.swift */; };
@@ -18,6 +20,9 @@
 		2597294E2AC56D93000CFF09 /* swiftSdkforgrozziieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597294D2AC56D93000CFF09 /* swiftSdkforgrozziieUITests.swift */; };
 		259729502AC56D93000CFF09 /* swiftSdkforgrozziieUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597294F2AC56D93000CFF09 /* swiftSdkforgrozziieUITestsLaunchTests.swift */; };
 		259729612AC58CC5000CFF09 /* SPIndicator in Frameworks */ = {isa = PBXBuildFile; productRef = 259729602AC58CC5000CFF09 /* SPIndicator */; };
+		25D757552AC90E3400C4B7CA /* ShowAllBluetoothListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D757542AC90E3400C4B7CA /* ShowAllBluetoothListController.swift */; };
+		25D757572AC91C9500C4B7CA /* MyListBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D757562AC91C9500C4B7CA /* MyListBlue.swift */; };
+		25D757592AC9256200C4B7CA /* MyListBlue22.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D757582AC9256200C4B7CA /* MyListBlue22.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		2571B86D2AC7C029006828AF /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		2571B8752AC80793006828AF /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
+		2571B8772AC807AA006828AF /* PopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopUp.xib; sourceTree = "<group>"; };
 		259729292AC56D92000CFF09 /* swiftSdkforgrozziie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftSdkforgrozziie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2597292C2AC56D92000CFF09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2597292E2AC56D92000CFF09 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +59,9 @@
 		259729492AC56D93000CFF09 /* swiftSdkforgrozziieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftSdkforgrozziieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2597294D2AC56D93000CFF09 /* swiftSdkforgrozziieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftSdkforgrozziieUITests.swift; sourceTree = "<group>"; };
 		2597294F2AC56D93000CFF09 /* swiftSdkforgrozziieUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftSdkforgrozziieUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		25D757542AC90E3400C4B7CA /* ShowAllBluetoothListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAllBluetoothListController.swift; sourceTree = "<group>"; };
+		25D757562AC91C9500C4B7CA /* MyListBlue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListBlue.swift; sourceTree = "<group>"; };
+		25D757582AC9256200C4B7CA /* MyListBlue22.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListBlue22.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,13 +114,18 @@
 			isa = PBXGroup;
 			children = (
 				2597292C2AC56D92000CFF09 /* AppDelegate.swift */,
+				2571B8772AC807AA006828AF /* PopUp.xib */,
+				2571B8752AC80793006828AF /* PopUp.swift */,
 				2597292E2AC56D92000CFF09 /* SceneDelegate.swift */,
 				2571B86D2AC7C029006828AF /* CustomAlertViewController.swift */,
+				25D757542AC90E3400C4B7CA /* ShowAllBluetoothListController.swift */,
 				259729302AC56D92000CFF09 /* ViewController.swift */,
 				259729322AC56D92000CFF09 /* Main.storyboard */,
 				259729352AC56D93000CFF09 /* Assets.xcassets */,
 				259729372AC56D93000CFF09 /* LaunchScreen.storyboard */,
 				2597293A2AC56D93000CFF09 /* Info.plist */,
+				25D757562AC91C9500C4B7CA /* MyListBlue.swift */,
+				25D757582AC9256200C4B7CA /* MyListBlue22.swift */,
 			);
 			path = swiftSdkforgrozziie;
 			sourceTree = "<group>";
@@ -244,6 +259,7 @@
 			files = (
 				259729392AC56D93000CFF09 /* LaunchScreen.storyboard in Resources */,
 				259729362AC56D93000CFF09 /* Assets.xcassets in Resources */,
+				2571B8782AC807AA006828AF /* PopUp.xib in Resources */,
 				259729342AC56D92000CFF09 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,7 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2571B86E2AC7C029006828AF /* CustomAlertViewController.swift in Sources */,
+				2571B8762AC80793006828AF /* PopUp.swift in Sources */,
 				259729312AC56D92000CFF09 /* ViewController.swift in Sources */,
+				25D757592AC9256200C4B7CA /* MyListBlue22.swift in Sources */,
+				25D757572AC91C9500C4B7CA /* MyListBlue.swift in Sources */,
+				25D757552AC90E3400C4B7CA /* ShowAllBluetoothListController.swift in Sources */,
 				2597292D2AC56D92000CFF09 /* AppDelegate.swift in Sources */,
 				2597292F2AC56D92000CFF09 /* SceneDelegate.swift in Sources */,
 			);

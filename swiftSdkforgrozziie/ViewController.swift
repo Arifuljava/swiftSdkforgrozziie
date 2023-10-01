@@ -11,6 +11,8 @@ import CoreBluetooth
 
 
 class ViewController: UIViewController , CBCentralManagerDelegate,UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource{
+    var popoverlaygetcustom:PopUp!
+    
 
     @IBOutlet weak var print_options: UIButton!
     @IBOutlet weak var bitmapImage_forPrint: UIImageView!
@@ -23,6 +25,9 @@ class ViewController: UIViewController , CBCentralManagerDelegate,UITextFieldDel
     @IBOutlet weak var print_density: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //
+        self.popoverlaygetcustom  = PopUp(frame: self.view.frame)
+        
         // Do any additional setup after loading the view.
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
 
@@ -38,6 +43,9 @@ class ViewController: UIViewController , CBCentralManagerDelegate,UITextFieldDel
         print_speed.delegate = self
             print_copy.delegate = self
         
+    }
+    @objc func closebutton(){
+        self.popoverlaygetcustom.removeFromSuperview()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return 5 // Adjust the number of rows as needed
@@ -133,11 +141,17 @@ class ViewController: UIViewController , CBCentralManagerDelegate,UITextFieldDel
                 self.cbcm = CBCentralManager(delegate: self, queue: nil)
         if(flag==1)
                {
+          //  let customViewController = CustomAlertViewController() // Initialize your custom view controller
+            //customViewController.modalPresentationStyle = .overCurrentContext // Set the presentation style as needed
+
+            // Present the custom view controller modally
+           // present(customViewController, animated: true, completion: nil)
          
            //showAlertDialougeforbutton();
-            let customAlert = CustomSecondForTesting()
-            customAlert.tableData = ["Item 1", "Item 2", "Item 3"] // Set your table view data
-            present(customAlert, animated: true, completion: nil)
+            
+            let sec = storyboard?.instantiateViewController(identifier: "mybluee") as! MyListBlue
+                                present(sec,animated: true)
+            
            
               }
                else{

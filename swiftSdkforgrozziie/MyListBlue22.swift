@@ -1,0 +1,338 @@
+//
+//  MyListBlue22.swift
+//  swiftSdkforgrozziie
+//
+//  Created by sang on 1/10/23.
+//
+
+import UIKit
+
+//
+//  MyListBlue.swift
+//  swiftSdkforgrozziie
+//
+//  Created by sang on 1/10/23.
+//
+
+import UIKit
+
+
+import UIKit
+import CoreBluetooth
+import SwiftUI
+import SPIndicator
+
+
+
+class MyListBlue22: UIViewController,  CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource{
+    private var centralManager: CBCentralManager?
+        private var discoveredPeripherals: [CBPeripheral] = []
+        
+   
+    @IBOutlet weak var mylistvl: UITableView!
+    
+    
+    //cnc
+    var manager:CBCentralManager!
+    var peripheral:CBPeripheral!
+
+    let BEAN_NAME = "AC695X_1(BLE)"
+    var myCharacteristic : CBCharacteristic!
+        
+        var isMyPeripheralConected = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print()
+        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
+               
+        // Do any additional setup after loading the view.
+        
+        manager = CBCentralManager(delegate: self, queue: nil)
+        mylistvl.delegate = self
+        mylistvl.dataSource = self
+        
+    }
+    
+
+    var  mainflagg = 0
+    var bluename = "demo"
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+            if central.state == .poweredOn {
+                if let peripheral = peripheral {
+                            if peripheral.state == .connected {
+                                // The peripheral is connected
+                                print("Peripheral is connected.")
+                            } else {
+                                // The peripheral is not connected
+                                print("Peripheral is not connected.")
+                                central.scanForPeripherals(withServices: nil, options: nil)
+                            }
+                        } else {
+                            // No peripheral is currently assigned
+                            print("No peripheral assigned.")
+                            central.scanForPeripherals(withServices: nil, options: nil)
+                        }
+                
+            } else {
+                print("Bluetooth is not available.")
+            }
+        }
+        
+        func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+            if !discoveredPeripherals.contains(peripheral) {
+               discoveredPeripherals.append(peripheral)
+                mylistvl.reloadData()
+                print(discoveredPeripherals)
+                
+            }
+          //  print(mainflagg.description)
+            if peripheral.name?.contains("AC695X_1(BLE)") == true {
+               
+
+                        self.peripheral = peripheral
+                        self.peripheral.delegate = self
+
+                        manager.connect(peripheral, options: nil)
+                peripheral.delegate = self
+                peripheral.discoverServices(nil)
+                connectToPrinter()
+                        print("My  discover peripheral", peripheral)
+                self.manager.stopScan()
+//check pherifiral
+               
+                
+                
+                    }
+            
+            
+            
+        }
+    func connectToPrinter() {
+            guard let peripheral = peripheral else {
+                return
+            }
+        manager?.connect(peripheral, options: nil)
+        print("Ready")
+        }
+    
+        // MARK: - UITableViewDelegate & UITableViewDataSource
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let peripheral = discoveredPeripherals[indexPath.row]
+        let devicename = peripheral.identifier.uuidString
+        let devicenamfe = peripheral.name
+        let scond =  peripheral.name
+        let alert = UIAlertController(title: scond ?? "Unknown Name "+"", message: "Are you want to connect this printer with your bluetooth?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            switch action.style{
+                case .default:
+   
+                
+               
+               
+                
+                print("default")
+                
+               
+                case .cancel:
+                
+                print("cancel")
+                
+                
+                case .destructive:
+                
+                print("destructive")
+                
+                
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+            switch action.style{
+                case .default:
+                print("default")
+                
+                
+                case .cancel:
+                print("cancel")
+                
+                case .destructive:
+                print("destructive")
+                
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           print("se")
+            print(discoveredPeripherals.count)
+            return discoveredPeripherals.count
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellllll", for: indexPath)
+            let peripheral = discoveredPeripherals[indexPath.row]
+            cell.textLabel?.text = peripheral.name ?? "Unknown Device"
+            cell.detailTextLabel?.text = peripheral.identifier.uuidString
+            /*
+             if peripheral.name?.contains("AC695X_1(BLE)") == true {
+
+                         print("Did discover peripheral", peripheral)
+
+                 
+                     }
+             */
+            
+            return cell
+        }
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        if let error = error {
+            print("Failed to connect to peripheral: \(error.localizedDescription)")
+        } else {
+            print("Failed to connect to peripheral")
+        }
+        // Perform any necessary error handling or recovery steps
+    }
+   
+    
+    
+     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+             isMyPeripheralConected = true //when connected change to true
+             peripheral.delegate = self
+             peripheral.discoverServices(nil)
+         
+     
+         print("Conn")
+         var statusMessage = "Connected Successfully with this device : "+BEAN_NAME.description
+         SPIndicator.present(title: ""+statusMessage, message: "Bluetooth Status", preset: .done, from: .bottom)
+         
+         
+             
+         }
+
+        
+        func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+            isMyPeripheralConected = false //and to falso when disconnected
+            var statusMessage = "Can't  connected with this device : "+BEAN_NAME.description
+            SPIndicator.present(title: ""+statusMessage, message: "Connection Status", preset: .error, from: .bottom)
+            print("dis")
+        }
+    func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
+        print("not connect")
+    }
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+            guard let services = peripheral.services else { return }
+            
+            for service in services {
+              peripheral.discoverCharacteristics(nil, for: service)
+                print("Discoveri")
+            }
+        }
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+            guard let characteristics = service.characteristics else { return }
+            
+            for characteristic in characteristics {
+                if characteristic.properties.contains(.writeWithoutResponse) {
+                    printerCharacteristic = characteristic
+                    var ttt = "fggfgfg"
+                    guard let data = ttt.data(using: .utf8) else { return }
+                    
+                    peripheral.writeValue(data, for: printerCharacteristic, type: .withoutResponse)
+                    print("print ready")
+                    break
+                }
+            }
+        }
+    private var printerCharacteristic: CBCharacteristic!
+    func printText(_ text: String) {
+        var ttt = "fggfgfg"
+        guard let data = ttt.data(using: .utf8) else { return }
+        
+        peripheral.writeValue(data, for: printerCharacteristic, type: .withoutResponse)
+    }
+    /*
+     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+             guard let services = peripheral.services else { return }
+             
+             for service in services {
+               peripheral.discoverCharacteristics(nil, for: service)
+                 print("Discoveri")
+             }
+         }
+     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+             guard let characteristics = service.characteristics else { return }
+             
+             for characteristic in characteristics {
+                 if characteristic.properties.contains(.writeWithoutResponse) {
+                     printerCharacteristic = characteristic
+                     var ttt = "fggfgfg"
+                     guard let data = ttt.data(using: .utf8) else { return }
+                     
+                     peripheral.writeValue(data, for: printerCharacteristic, type: .withoutResponse)
+                     print("print ready")
+                     break
+                 }
+             }
+         }
+     private var printerCharacteristic: CBCharacteristic!
+     func printText(_ text: String) {
+         var ttt = "fggfgfg"
+         guard let data = ttt.data(using: .utf8) else { return }
+         
+         peripheral.writeValue(data, for: printerCharacteristic, type: .withoutResponse)
+     }
+     */
+    
+    
+    /*
+     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+             guard let services = peripheral.services else { return }
+             
+             for service in services {
+               // peripheral.discoverCharacteristics(nil, for: service)
+             }
+         }
+     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+             guard let characteristics = service.characteristics else { return }
+             
+             for characteristic in characteristics {
+                 if characteristic.properties.contains(.writeWithoutResponse) {
+                     printerCharacteristic = characteristic
+                     break
+                 }
+             }
+         }
+         
+         func printText(_ text: String) {
+             var ttt = "fggfgfg"
+             guard let data = ttt.data(using: .utf8) else { return }
+             
+             peripheral.writeValue(data, for: printerCharacteristic, type: .withoutResponse)
+         }
+     private var printerCharacteristic: CBCharacteristic!
+     */
+        
+    
+   /*
+    
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+            guard let characteristics = service.characteristics else { return }
+            
+            for characteristic in characteristics {
+                if characteristic.properties.contains(.writeWithoutResponse) {
+                    printerCharacteristic = characteristic
+                    break
+                }
+            }
+        }
+        
+        func printText(_ text: String) {
+            var ttt = "fggfgfg"
+            guard let data = ttt.data(using: .utf8) else { return }
+            
+            peripheral.writeValue(data, for: printerCharacteristic, type: .withoutResponse)
+        }
+    private var printerCharacteristic: CBCharacteristic!
+    */
+}
